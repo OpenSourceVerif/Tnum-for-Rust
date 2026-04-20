@@ -2,6 +2,11 @@
 
 A `no_std`-compatible **Tnum** (truncated number) abstract domain implementation in pure Rust, designed for static analysis of eBPF programs (Solana SBF).
 
+## Reference
+- "Sound, Precise, and Fast Abstract Interpretation with Tristate Numbers". CGO2022. https://arxiv.org/abs/2105.05398
+- "Program Analysis Combining Generalized Bit-Level and Word-Level Abstractions". ISSTA2025. https://dl.acm.org/doi/10.1145/3728905
+- Linux tnum implementation in C. https://elixir.bootlin.com/linux/v6.17-rc4/source/kernel/bpf/tnum.c
+
 ## Overview
 
 Tnum is a compact abstract domain that represents a set of possible 64-bit unsigned integer values using two bitmasks:
@@ -9,7 +14,7 @@ Tnum is a compact abstract domain that represents a set of possible 64-bit unsig
 - `**value`**: bits known to be constant
 - `**mask**`: unknown bits (`1` = unknown, `0` = known)
 
-This representation enables efficient interval tracking with sub-interval precision, making it ideal for value-range analysis in eBPF interpreters and compilers.
+This representation enables precise bits tracking, making it ideal for value-range analysis in eBPF interpreters and compilers.
 
 ## Features
 
